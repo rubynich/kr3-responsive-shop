@@ -58,7 +58,7 @@ if (filtersToggle && filtersPanel) {
 // Элементы страницы. Модальное окно есть только на главной.
 const orderDialog = document.getElementById('order-dialog');
 const orderButtons = document.querySelectorAll('.product-card__button[data-product]');
-const closeDialogButton = document.getElementById('close-order-dialog');
+const closeDialogButtons = document.querySelectorAll('#close-order-dialog, [data-close-dialog]');
 const selectedProductInput = document.getElementById('selected-product');
 const selectedProductName = document.getElementById('selected-product-name');
 const successMessage = document.getElementById('success-message');
@@ -80,7 +80,7 @@ function getErrorMessage(field) {
   return 'Проверьте значение поля.';
 }
 
-// Показываем ошибку: рамка (aria-invalid) и текст под полем.
+// Показываем ошибку: рамка (aria-invalid), текст под полем и связь через aria-describedby.
 function showError(field) {
   const errorId = `${field.id}-error`;
   let error = document.getElementById(errorId);
@@ -89,18 +89,28 @@ function showError(field) {
     error = document.createElement('small');
     error.id = errorId;
     error.className = 'order-form__error';
+    error.setAttribute('role', 'alert');
     field.closest('.order-form__field').append(error);
   }
 
   error.textContent = getErrorMessage(field);
+
+  // Сохраняем постоянные подсказки поля (например, формат телефона).
+  const baseDescription = field.dataset.describedby;
+  field.setAttribute('aria-describedby', [baseDescription, errorId].filter(Boolean).join(' '));
   field.setAttribute('aria-invalid', 'true');
-  field.setAttribute('aria-describedby', errorId);
 }
 
-// Убираем ошибку у поля.
+// Убираем ошибку у поля и возвращаем исходную подсказку.
 function clearError(field) {
   field.removeAttribute('aria-invalid');
-  field.removeAttribute('aria-describedby');
+
+  if (field.dataset.describedby) {
+    field.setAttribute('aria-describedby', field.dataset.describedby);
+  } else {
+    field.removeAttribute('aria-describedby');
+  }
+
   const error = document.getElementById(`${field.id}-error`);
   if (error) error.remove();
 }
@@ -121,17 +131,23 @@ function showSuccess() {
 }
 
 if (orderDialog) {
+  closeDialogButtons.forEach((button) => {
+    button.addEventListener('click', () => orderDialog.close());
+  });
+
+  // Запоминаем кнопку, которая открыла окно, чтобы вернуть на неё фокус.
+  let dialogTrigger = null;
+
   orderButtons.forEach((button) => {
     button.addEventListener('click', () => {
       // Записываем товар в скрытое поле и показываем его в заголовке окна.
+      dialogTrigger = button;
       selectedProductInput.value = button.dataset.product;
       selectedProductName.textContent = button.dataset.product;
       document.getElementById('dialog-topic').value = 'product';
       orderDialog.showModal();
     });
   });
-
-  closeDialogButton.addEventListener('click', () => orderDialog.close());
 
   // Клик по затемнённому фону (за пределами окна) закрывает окно.
   orderDialog.addEventListener('click', (event) => {
@@ -144,12 +160,23 @@ if (orderDialog) {
   // При закрытии убираем ошибки, чтобы окно открывалось «чистым».
   orderDialog.addEventListener('close', () => {
     getFields(orderDialog.querySelector('.order-form')).forEach(clearError);
+    if (dialogTrigger) {
+      dialogTrigger.focus();
+      dialogTrigger = null;
+    }
   });
 }
 
 // Обработка всех форм заявки (в модальном окне и на странице order.html).
 document.querySelectorAll('.order-form').forEach((form) => {
   const fields = getFields(form);
+
+  // Запоминаем постоянные подсказки полей до появления ошибок.
+  fields.forEach((field) => {
+    if (field.hasAttribute('aria-describedby')) {
+      field.dataset.describedby = field.getAttribute('aria-describedby');
+    }
+  });
 
   // Если поле уже помечено ошибкой, перепроверяем его при вводе.
   fields.forEach((field) => {

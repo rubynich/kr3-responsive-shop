@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -47,11 +49,11 @@
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main" tabindex="-1">
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a class="breadcrumbs__link" href="index.html">Главная</a>
             <a class="breadcrumbs__link breadcrumbs__link--next" href="catalog.html">Каталог</a>
-            <span class="breadcrumbs__current">Игровая мышь PRO X2</span>
+            <span class="breadcrumbs__current" aria-current="page">Игровая мышь PRO X2</span>
         </nav>
 
         <article class="product-page">
@@ -120,11 +122,13 @@
 
     <footer class="site-footer" id="contacts">
         <div class="site-footer__inner">
-            <ul class="site-footer__links">
-                <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
+            <nav class="site-footer__nav" aria-label="Навигация в подвале">
+                <ul class="site-footer__links">
+                    <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
                 <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
                 <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
-            </ul>
+                </ul>
+            </nav>
             <p class="site-footer__text">Тел.: +7 (900) 000-00-00, e-mail: info@example.com</p>
             <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
             <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
