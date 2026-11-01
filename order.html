@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Страница оформления заявки: имя, e-mail, телефон, выбор товара и комментарий.">
+    <title>Заявка — Учебный интернет-магазин</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Заявка — Учебный интернет-магазин">
+    <meta property="og:description" content="Страница оформления заявки: имя, e-mail, телефон, выбор товара и комментарий.">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">ShopProject</a>
+
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current">Заявка</span>
+        </nav>
+
+        <section class="section">
+            <h1>Оформление заявки</h1>
+            <p>Заполните форму, и мы свяжемся с вами. Поля со звёздочкой обязательны.</p>
+        </section>
+
+        <div class="order-layout">
+            <section class="order-layout__form" aria-labelledby="order-form-title">
+                <h2 id="order-form-title">Форма заявки</h2>
+                <form class="order-form" id="order-form" action="#" method="post" novalidate>
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-name">Имя *</label>
+                        <input class="order-form__input" id="order-name" name="name" type="text"
+                            placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-email">E-mail *</label>
+                        <input class="order-form__input" id="order-email" name="email" type="email"
+                            placeholder="example@mail.ru" autocomplete="email" required>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-phone">Телефон *</label>
+                        <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel"
+                            placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+                        <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-product">Товар</label>
+                        <select class="order-form__select" id="order-product" name="product">
+                            <option value="">Не выбран</option>
+                            <option value="1">Клавиатура с RGB-подсветкой</option>
+                            <option value="2">Игровая мышь PRO X2</option>
+                            <option value="3">Игровая гарнитура с RGB</option>
+                            <option value="4">Белая гарнитура с микрофоном</option>
+                            <option value="5">Игровая клавиатура, красная подсветка</option>
+                            <option value="6">Игровая мышь сиреневая</option>
+                        </select>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-topic">Тема заявки *</label>
+                        <select class="order-form__select" id="order-topic" name="topic" required>
+                            <option value="">Выберите тему</option>
+                            <option value="product">Заказ товара</option>
+                            <option value="consultation">Консультация</option>
+                            <option value="delivery">Доставка</option>
+                        </select>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-date">Дата связи</label>
+                        <input class="order-form__input" id="order-date" name="date" type="date">
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-comment">Комментарий</label>
+                        <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4"
+                            placeholder="Укажите дополнительную информацию"></textarea>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label order-form__label--inline" for="order-agreement">
+                            <input class="order-form__checkbox" id="order-agreement" name="agreement" type="checkbox" required>
+                            Я согласен на обработку данных *
+                        </label>
+                    </div>
+
+                    <div class="order-form__actions">
+                        <button class="button button--secondary" type="reset">Очистить</button>
+                        <button class="button button--primary" type="submit">Отправить заявку</button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="order-layout__aside" aria-label="Как проходит заявка">
+                <h2 class="order-layout__aside-title">Как это работает</h2>
+                <ol class="order-layout__steps">
+                    <li>Вы заполняете форму.</li>
+                    <li>Менеджер проверяет заявку.</li>
+                    <li>Мы связываемся с вами в выбранную дату.</li>
+                </ol>
+                <p>Остались вопросы? Загляните в <a href="contacts.html">контакты</a>.</p>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <ul class="site-footer__links">
+                <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
+                <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
+                <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+            </ul>
+            <p class="site-footer__text">Тел.: +7 (900) 000-00-00, e-mail: info@example.com</p>
+            <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+        </div>
+    </footer>
+
+    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+
+    <p class="success-message" id="success-message" role="status" hidden>
+        Форма успешно отправлена!
+    </p>
+</body>
+
+</html>

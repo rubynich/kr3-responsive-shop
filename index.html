@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Главная страница учебного интернет-магазина игровой периферии: преимущества, популярные товары, быстрая заявка.">
+    <title>Учебный интернет-магазин</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Учебный интернет-магазин">
+    <meta property="og:description" content="Главная страница учебного интернет-магазина игровой периферии: преимущества, популярные товары, быстрая заявка.">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">ShopProject</a>
+
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <section class="hero">
+            <h1 class="hero__title">Учебный интернет-магазин игровой периферии</h1>
+            <p class="hero__text">
+                Клавиатуры, мыши и гарнитуры: выберите товар в каталоге, изучите характеристики и оставьте заявку.
+            </p>
+            <a class="button button--primary" href="#popular">Перейти к товарам</a>
+        </section>
+
+        <nav class="anchor-nav" aria-label="Разделы страницы">
+            <a class="anchor-nav__link" href="#advantages">Преимущества</a>
+            <a class="anchor-nav__link" href="#popular">Популярные товары</a>
+            <a class="anchor-nav__link" href="#contacts">Обратная связь</a>
+        </nav>
+
+        <section class="section" id="advantages">
+            <h2 class="section__title">Преимущества магазина</h2>
+
+            <ul class="advantages-list">
+                <li>каталог с категориями и фильтрами;</li>
+                <li>подробные карточки с таблицей характеристик;</li>
+                <li>заявка на товар прямо с главной страницы;</li>
+                <li>единая навигация по всем страницам сайта.</li>
+            </ul>
+        </section>
+
+        <section class="section" id="popular">
+            <h2 class="section__title">Популярные товары</h2>
+
+            <div class="products-grid">
+                <article class="product-card product-card--featured" data-category="keyboards">
+                    <span class="product-card__badge">Хит</span>
+                    <img class="product-card__image" src="images/product-1.png" alt="Клавиатура с цифровым блоком, чёрно-бежево-жёлтые клавиши, RGB-подсветка" width="760" height="428" loading="lazy">
+                    <h3 class="product-card__title">Клавиатура с RGB-подсветкой</h3>
+                    <p class="product-card__description">Полноразмерная клавиатура с цифровым блоком.</p>
+                    <p class="product-card__price">Цена: 4500 руб.</p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+                        <button class="button button--secondary product-card__button" type="button" data-product="Клавиатура с RGB-подсветкой">Заказать</button>
+                    </div>
+                </article>
+                <article class="product-card product-card--new" data-category="mice">
+                    <span class="product-card__badge">Новинка</span>
+                    <img class="product-card__image" src="images/product-2.png" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800" loading="lazy">
+                    <h3 class="product-card__title">Игровая мышь PRO X2</h3>
+                    <p class="product-card__description">Белая игровая мышь с боковыми кнопками.</p>
+                    <p class="product-card__price">Цена: 11900 руб.</p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="product-2.html">Подробнее</a>
+                        <button class="button button--secondary product-card__button" type="button" data-product="Игровая мышь PRO X2">Заказать</button>
+                    </div>
+                </article>
+                <article class="product-card product-card--discount" data-category="headsets">
+                    <span class="product-card__badge">Скидка</span>
+                    <img class="product-card__image" src="images/product-3.png" alt="Белая игровая гарнитура с RGB-кольцом на чашке и микрофоном" width="307" height="320" loading="lazy">
+                    <h3 class="product-card__title">Игровая гарнитура с RGB</h3>
+                    <p class="product-card__description">Белая гарнитура с гибким микрофоном.</p>
+                    <p class="product-card__price">Цена: 3500 руб. <s class="product-card__old-price">4200 руб.</s></p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="product-3.html">Подробнее</a>
+                        <button class="button button--secondary product-card__button" type="button" data-product="Игровая гарнитура с RGB">Заказать</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <ul class="site-footer__links">
+                <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
+                <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
+                <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+            </ul>
+            <p class="site-footer__text">Тел.: +7 (900) 000-00-00, e-mail: info@example.com</p>
+            <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+        </div>
+    </footer>
+
+    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+        <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+        <p class="order-dialog__product">Товар: <strong id="selected-product-name"></strong></p>
+
+        <form class="order-form" id="order-dialog-form" action="#" method="post" novalidate>
+            <input id="selected-product" name="selected-product" type="hidden">
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="dialog-name">Имя</label>
+                <input class="order-form__input" id="dialog-name" name="name" type="text"
+                    placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="dialog-email">E-mail</label>
+                <input class="order-form__input" id="dialog-email" name="email" type="email"
+                    placeholder="example@mail.ru" autocomplete="email" required>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="dialog-phone">Телефон</label>
+                <input class="order-form__input" id="dialog-phone" name="phone" type="tel" inputmode="tel"
+                    placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+                <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="dialog-topic">Тема заявки</label>
+                <select class="order-form__select" id="dialog-topic" name="topic" required>
+                    <option value="">Выберите тему</option>
+                    <option value="product">Заказ товара</option>
+                    <option value="consultation">Консультация</option>
+                    <option value="delivery">Доставка</option>
+                </select>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label" for="dialog-comment">Комментарий</label>
+                <textarea class="order-form__textarea" id="dialog-comment" name="comment" rows="3"
+                    placeholder="Укажите дополнительную информацию"></textarea>
+            </div>
+
+            <div class="order-form__field">
+                <label class="order-form__label order-form__label--inline" for="dialog-agreement">
+                    <input class="order-form__checkbox" id="dialog-agreement" name="agreement" type="checkbox" required>
+                    Я согласен на обработку данных
+                </label>
+            </div>
+
+            <div class="order-form__actions">
+                <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
+                <button class="button button--primary" type="submit">Отправить заявку</button>
+            </div>
+        </form>
+    </dialog>
+
+    <p class="success-message" id="success-message" role="status" hidden>
+        Форма успешно отправлена!
+    </p>
+</body>
+
+</html>

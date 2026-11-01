@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Карточка товара «Игровая гарнитура с RGB»: изображение, описание, цена, таблица характеристик и кнопка заявки.">
+    <title>Игровая гарнитура с RGB — карточка товара</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Игровая гарнитура с RGB — карточка товара">
+    <meta property="og:description" content="Карточка товара «Игровая гарнитура с RGB»: изображение, описание, цена, таблица характеристик и кнопка заявки.">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">ShopProject</a>
+
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <a class="breadcrumbs__link breadcrumbs__link--next" href="catalog.html">Каталог</a>
+            <span class="breadcrumbs__current">Игровая гарнитура с RGB</span>
+        </nav>
+
+        <article class="product-page">
+            <h1 class="product-page__title">Игровая гарнитура с RGB</h1>
+
+            <div class="product-page__layout">
+                <div class="product-page__media">
+                    <span class="product-page__badge product-page__badge--discount">Скидка</span>
+                    <img class="product-page__image" src="images/product-3.png" alt="Белая игровая гарнитура с RGB-кольцом на чашке и микрофоном" width="307" height="320">
+                </div>
+
+                <div class="product-page__info">
+                    <p class="product-page__description">Гарнитура с мягкими амбушюрами, гибким микрофоном и RGB-подсветкой на чашках. Белый цвет хорошо сочетается со светлым рабочим местом.</p>
+                    <p class="product-page__price">3500 руб. <s class="product-page__old-price">4200 руб.</s></p>
+                    <p class="product-page__stock">В наличии</p>
+                    <div class="product-page__actions">
+                        <a class="button button--primary" href="order.html">Оставить заявку</a>
+                        <a class="button button--secondary" href="catalog.html">Назад в каталог</a>
+                    </div>
+                </div>
+            </div>
+
+            <section class="product-page__section" aria-labelledby="specs-title">
+                <h2 id="specs-title">Характеристики</h2>
+                <table class="product-table">
+                    <caption class="product-table__caption">Характеристики товара</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Параметр</th>
+                            <th scope="col">Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><th scope="row">Категория</th><td>Гарнитуры</td></tr>
+                        <tr><th scope="row">Артикул</th><td>HS-003</td></tr>
+                        <tr><th scope="row">Подключение</th><td>Проводное</td></tr>
+                        <tr><th scope="row">Подсветка</th><td>RGB на чашках</td></tr>
+                        <tr><th scope="row">Цвет</th><td>Белый</td></tr>
+                        <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
+                        <tr><th scope="row">Цена</th><td>3500 руб.</td></tr>
+                        <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="product-page__section" aria-labelledby="related-title">
+                <h2 id="related-title">Другие товары</h2>
+                <div class="product-page__actions">
+                        <a class="button button--secondary" href="product.html">Клавиатура с RGB-подсветкой</a>
+                        <a class="button button--secondary" href="product-2.html">Игровая мышь PRO X2</a>
+                </div>
+            </section>
+
+            <aside class="product-page__aside" aria-label="Доставка и оплата">
+                <h2 class="product-page__aside-title">Доставка и оплата</h2>
+                <ul>
+                    <li>Самовывоз — бесплатно.</li>
+                    <li>Курьерская доставка — по договорённости.</li>
+                    <li>Оплата при получении или по счёту.</li>
+                </ul>
+            </aside>
+        </article>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <ul class="site-footer__links">
+                <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
+                <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
+                <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+            </ul>
+            <p class="site-footer__text">Тел.: +7 (900) 000-00-00, e-mail: info@example.com</p>
+            <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+        </div>
+    </footer>
+
+    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+</body>
+
+</html>
