@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="description" content="Главная страница учебного интернет-магазина игровой периферии: преимущества, популярные товары, быстрая заявка.">
     <title>Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Учебный интернет-магазин">
@@ -18,7 +20,12 @@
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
 
-            <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="site-nav-toggle__icon" aria-hidden="true"></span>
+                <span class="site-nav-toggle__text">Меню</span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
                         <a class="site-nav__link site-nav__link--active" aria-current="page" href="index.html">Главная</a>
@@ -42,11 +49,24 @@
 
     <main class="site-main">
         <section class="hero">
-            <h1 class="hero__title">Учебный интернет-магазин игровой периферии</h1>
-            <p class="hero__text">
-                Клавиатуры, мыши и гарнитуры: выберите товар в каталоге, изучите характеристики и оставьте заявку.
-            </p>
-            <a class="button button--primary" href="#popular">Перейти к товарам</a>
+            <div class="hero__content">
+                <h1 class="hero__title">Учебный интернет-магазин игровой периферии</h1>
+                <p class="hero__text">
+                    Клавиатуры, мыши и гарнитуры: выберите товар в каталоге, изучите характеристики и оставьте заявку.
+                </p>
+                <div class="hero__actions">
+                    <a class="button button--primary" href="#popular">Перейти к товарам</a>
+                    <a class="button button--secondary" href="catalog.html">Открыть каталог</a>
+                </div>
+            </div>
+            <picture class="hero__media">
+                <source media="(min-width: 1200px)" srcset="images/hero-desktop.webp" type="image/webp">
+                <source media="(min-width: 768px)" srcset="images/hero-tablet.webp" type="image/webp">
+                <source srcset="images/hero-mobile.webp" type="image/webp">
+                <img class="hero__image" src="images/hero-desktop.png"
+                    alt="Клавиатура с цифровым блоком и RGB-подсветкой из учебного каталога"
+                    width="760" height="428" fetchpriority="high" decoding="async">
+            </picture>
         </section>
 
         <nav class="anchor-nav" aria-label="Разделы страницы">
@@ -72,7 +92,7 @@
             <div class="products-grid">
                 <article class="product-card product-card--featured" data-category="keyboards">
                     <span class="product-card__badge">Хит</span>
-                    <img class="product-card__image" src="images/product-1.png" alt="Клавиатура с цифровым блоком, чёрно-бежево-жёлтые клавиши, RGB-подсветка" width="760" height="428" loading="lazy">
+                    <img class="product-card__image" src="images/product-1.png" alt="Клавиатура с цифровым блоком, чёрно-бежево-жёлтые клавиши, RGB-подсветка" width="760" height="428" loading="lazy" srcset="images/product-1-320.png 320w, images/product-1-480.png 480w, images/product-1-640.png 640w, images/product-1.png 760w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Клавиатура с RGB-подсветкой</h3>
                     <p class="product-card__description">Полноразмерная клавиатура с цифровым блоком.</p>
                     <p class="product-card__price">Цена: 4500 руб.</p>
@@ -83,7 +103,7 @@
                 </article>
                 <article class="product-card product-card--new" data-category="mice">
                     <span class="product-card__badge">Новинка</span>
-                    <img class="product-card__image" src="images/product-2.png" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800" loading="lazy">
+                    <img class="product-card__image" src="images/product-2.png" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800" loading="lazy" srcset="images/product-2-320.png 320w, images/product-2-480.png 480w, images/product-2-640.png 640w, images/product-2.png 779w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Игровая мышь PRO X2</h3>
                     <p class="product-card__description">Белая игровая мышь с боковыми кнопками.</p>
                     <p class="product-card__price">Цена: 11900 руб.</p>
@@ -94,7 +114,7 @@
                 </article>
                 <article class="product-card product-card--discount" data-category="headsets">
                     <span class="product-card__badge">Скидка</span>
-                    <img class="product-card__image" src="images/product-3.png" alt="Белая игровая гарнитура с RGB-кольцом на чашке и микрофоном" width="307" height="320" loading="lazy">
+                    <img class="product-card__image" src="images/product-3.png" alt="Белая игровая гарнитура с RGB-кольцом на чашке и микрофоном" width="307" height="320" loading="lazy" srcset="images/product-3-160.png 160w, images/product-3.png 307w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Игровая гарнитура с RGB</h3>
                     <p class="product-card__description">Белая гарнитура с гибким микрофоном.</p>
                     <p class="product-card__price">Цена: 3500 руб. <s class="product-card__old-price">4200 руб.</s></p>
@@ -158,13 +178,13 @@
                 </select>
             </div>
 
-            <div class="order-form__field">
+            <div class="order-form__field order-form__field--wide">
                 <label class="order-form__label" for="dialog-comment">Комментарий</label>
                 <textarea class="order-form__textarea" id="dialog-comment" name="comment" rows="3"
                     placeholder="Укажите дополнительную информацию"></textarea>
             </div>
 
-            <div class="order-form__field">
+            <div class="order-form__field order-form__field--wide">
                 <label class="order-form__label order-form__label--inline" for="dialog-agreement">
                     <input class="order-form__checkbox" id="dialog-agreement" name="agreement" type="checkbox" required>
                     Я согласен на обработку данных

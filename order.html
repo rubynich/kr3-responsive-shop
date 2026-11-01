@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="description" content="Страница оформления заявки: имя, e-mail, телефон, выбор товара и комментарий.">
     <title>Заявка — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Заявка — Учебный интернет-магазин">
@@ -18,7 +20,12 @@
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
 
-            <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="site-nav-toggle__icon" aria-hidden="true"></span>
+                <span class="site-nav-toggle__text">Меню</span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="index.html">Главная</a>
@@ -102,13 +109,13 @@
                         <input class="order-form__input" id="order-date" name="date" type="date">
                     </div>
 
-                    <div class="order-form__field">
+                    <div class="order-form__field order-form__field--wide">
                         <label class="order-form__label" for="order-comment">Комментарий</label>
                         <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4"
                             placeholder="Укажите дополнительную информацию"></textarea>
                     </div>
 
-                    <div class="order-form__field">
+                    <div class="order-form__field order-form__field--wide">
                         <label class="order-form__label order-form__label--inline" for="order-agreement">
                             <input class="order-form__checkbox" id="order-agreement" name="agreement" type="checkbox" required>
                             Я согласен на обработку данных *

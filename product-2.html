@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="description" content="Карточка товара «Игровая мышь PRO X2»: изображение, описание, цена, таблица характеристик и кнопка заявки.">
     <title>Игровая мышь PRO X2 — карточка товара</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Игровая мышь PRO X2 — карточка товара">
@@ -18,7 +20,12 @@
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
 
-            <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="site-nav-toggle__icon" aria-hidden="true"></span>
+                <span class="site-nav-toggle__text">Меню</span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="index.html">Главная</a>
@@ -53,7 +60,7 @@
             <div class="product-page__layout">
                 <div class="product-page__media">
                     <span class="product-page__badge product-page__badge--new">Новинка</span>
-                    <img class="product-page__image" src="images/product-2.png" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800">
+                    <img class="product-page__image" src="images/product-2.png" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800" srcset="images/product-2-320.png 320w, images/product-2-480.png 480w, images/product-2-640.png 640w, images/product-2.png 779w" sizes="(max-width: 899px) 100vw, 50vw" decoding="async">
                 </div>
 
                 <div class="product-page__info">
@@ -69,6 +76,7 @@
 
             <section class="product-page__section" aria-labelledby="specs-title">
                 <h2 id="specs-title">Характеристики</h2>
+            <div class="table-wrapper">
                 <table class="product-table">
                     <caption class="product-table__caption">Характеристики товара</caption>
                     <thead>
@@ -78,16 +86,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><th scope="row">Категория</th><td>Мыши</td></tr>
-                        <tr><th scope="row">Артикул</th><td>MS-002</td></tr>
-                        <tr><th scope="row">Подключение</th><td>Беспроводное</td></tr>
-                        <tr><th scope="row">Подсветка</th><td>Световой индикатор</td></tr>
-                        <tr><th scope="row">Цвет</th><td>Белый с чёрной верхней панелью</td></tr>
-                        <tr><th scope="row">Гарантия</th><td>12 месяцев</td></tr>
-                        <tr><th scope="row">Цена</th><td>11900 руб.</td></tr>
-                        <tr><th scope="row">Наличие</th><td>В наличии</td></tr>
+                        <tr><th scope="row">Категория</th><td data-label="Категория">Мыши</td></tr>
+                        <tr><th scope="row">Артикул</th><td data-label="Артикул">MS-002</td></tr>
+                        <tr><th scope="row">Подключение</th><td data-label="Подключение">Беспроводное</td></tr>
+                        <tr><th scope="row">Подсветка</th><td data-label="Подсветка">Световой индикатор</td></tr>
+                        <tr><th scope="row">Цвет</th><td data-label="Цвет">Белый с чёрной верхней панелью</td></tr>
+                        <tr><th scope="row">Гарантия</th><td data-label="Гарантия">12 месяцев</td></tr>
+                        <tr><th scope="row">Цена</th><td data-label="Цена">11900 руб.</td></tr>
+                        <tr><th scope="row">Наличие</th><td data-label="Наличие">В наличии</td></tr>
                     </tbody>
                 </table>
+            </div>
             </section>
 
             <section class="product-page__section" aria-labelledby="related-title">
