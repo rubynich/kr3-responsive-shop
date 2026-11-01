@@ -1,3 +1,60 @@
+// Включаем «js»-режим: без него меню и фильтры остаются открытыми.
+document.documentElement.classList.replace('no-js', 'js');
+
+// ---------- Мобильное меню ----------
+
+const navToggle = document.querySelector('.site-nav-toggle');
+const siteNav = document.getElementById('site-nav');
+
+if (navToggle && siteNav) {
+  // Открыть или закрыть меню и синхронизировать состояние кнопки.
+  const setNavState = (open) => {
+    siteNav.classList.toggle('site-nav--open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+  };
+
+  navToggle.addEventListener('click', () => {
+    setNavState(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // После перехода по ссылке меню закрывается.
+  siteNav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setNavState(false);
+  });
+
+  // Esc закрывает меню и возвращает фокус на кнопку.
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && siteNav.classList.contains('site-nav--open')) {
+      setNavState(false);
+      navToggle.focus();
+    }
+  });
+
+  // На широком экране меню всегда открыто, состояние кнопки сбрасывается.
+  const desktopQuery = window.matchMedia('(min-width: 768px)');
+  const resetOnDesktop = (event) => {
+    if (event.matches) setNavState(false);
+  };
+  if (desktopQuery.addEventListener) {
+    desktopQuery.addEventListener('change', resetOnDesktop);
+  } else {
+    desktopQuery.addListener(resetOnDesktop);
+  }
+}
+
+// ---------- Фильтры каталога на мобильном ----------
+
+const filtersToggle = document.querySelector('.catalog-filters__toggle');
+const filtersPanel = document.querySelector('.catalog-filters');
+
+if (filtersToggle && filtersPanel) {
+  filtersToggle.addEventListener('click', () => {
+    const open = filtersPanel.classList.toggle('catalog-filters--open');
+    filtersToggle.setAttribute('aria-expanded', String(open));
+    filtersToggle.textContent = open ? 'Скрыть фильтры' : 'Показать фильтры';
+  });
+}
+
 // Элементы страницы. Модальное окно есть только на главной.
 const orderDialog = document.getElementById('order-dialog');
 const orderButtons = document.querySelectorAll('.product-card__button[data-product]');

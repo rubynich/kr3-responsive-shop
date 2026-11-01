@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
     <meta name="description" content="Каталог товаров учебного интернет-магазина: шесть карточек, категории и блок фильтров.">
     <title>Каталог товаров — Учебный интернет-магазин</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Каталог товаров — Учебный интернет-магазин">
@@ -18,7 +20,12 @@
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
 
-            <nav class="site-nav" aria-label="Основная навигация">
+            <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="site-nav-toggle__icon" aria-hidden="true"></span>
+                <span class="site-nav-toggle__text">Меню</span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="index.html">Главная</a>
@@ -53,8 +60,13 @@
 
         <div class="catalog-layout">
             <aside class="catalog-filters catalog-layout__filters" aria-label="Фильтры каталога">
-                <h2 class="catalog-filters__title">Фильтры</h2>
-                <form class="catalog-filters__form" action="#" method="get">
+                <div class="catalog-filters__header">
+                    <h2 class="catalog-filters__title">Фильтры</h2>
+                    <button class="catalog-filters__toggle" type="button" aria-expanded="false" aria-controls="catalog-filters-form">
+                        Показать фильтры
+                    </button>
+                </div>
+                <form class="catalog-filters__form" id="catalog-filters-form" action="#" method="get">
                     <fieldset class="catalog-filters__group">
                         <legend class="catalog-filters__legend">Категория</legend>
                         <label class="catalog-filters__label">
@@ -90,7 +102,7 @@
                 <div class="products-grid">
                 <article class="product-card product-card--featured" data-category="keyboards">
                     <span class="product-card__badge">Хит</span>
-                    <img class="product-card__image" src="images/product-1.png" alt="Клавиатура с цифровым блоком, чёрно-бежево-жёлтые клавиши, RGB-подсветка" width="760" height="428" loading="lazy">
+                    <img class="product-card__image" src="images/product-1.png" alt="Клавиатура с цифровым блоком, чёрно-бежево-жёлтые клавиши, RGB-подсветка" width="760" height="428" loading="lazy" srcset="images/product-1-320.png 320w, images/product-1-480.png 480w, images/product-1-640.png 640w, images/product-1.png 760w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Клавиатура с RGB-подсветкой</h3>
                     <p class="product-card__description">Полноразмерная клавиатура с цифровым блоком.</p>
                     <p class="product-card__price">Цена: 4500 руб.</p>
@@ -100,7 +112,7 @@
                 </article>
                 <article class="product-card product-card--new" data-category="mice">
                     <span class="product-card__badge">Новинка</span>
-                    <img class="product-card__image" src="images/product-2.png" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800" loading="lazy">
+                    <img class="product-card__image" src="images/product-2.png" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800" loading="lazy" srcset="images/product-2-320.png 320w, images/product-2-480.png 480w, images/product-2-640.png 640w, images/product-2.png 779w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Игровая мышь PRO X2</h3>
                     <p class="product-card__description">Белая игровая мышь с боковыми кнопками.</p>
                     <p class="product-card__price">Цена: 11900 руб.</p>
@@ -110,7 +122,7 @@
                 </article>
                 <article class="product-card product-card--discount" data-category="headsets">
                     <span class="product-card__badge">Скидка</span>
-                    <img class="product-card__image" src="images/product-3.png" alt="Белая игровая гарнитура с RGB-кольцом на чашке и микрофоном" width="307" height="320" loading="lazy">
+                    <img class="product-card__image" src="images/product-3.png" alt="Белая игровая гарнитура с RGB-кольцом на чашке и микрофоном" width="307" height="320" loading="lazy" srcset="images/product-3-160.png 160w, images/product-3.png 307w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Игровая гарнитура с RGB</h3>
                     <p class="product-card__description">Белая гарнитура с гибким микрофоном.</p>
                     <p class="product-card__price">Цена: 3500 руб. <s class="product-card__old-price">4200 руб.</s></p>
@@ -119,7 +131,7 @@
                     </div>
                 </article>
                 <article class="product-card" data-category="headsets">
-                    <img class="product-card__image" src="images/product-4.png" alt="Белая гарнитура с микрофоном и подсвеченным логотипом на чашке" width="320" height="320" loading="lazy">
+                    <img class="product-card__image" src="images/product-4.png" alt="Белая гарнитура с микрофоном и подсвеченным логотипом на чашке" width="320" height="320" loading="lazy" srcset="images/product-4-160.png 160w, images/product-4.png 320w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Белая гарнитура с микрофоном</h3>
                     <p class="product-card__description">Мягкие амбушюры и подсветка логотипа.</p>
                     <p class="product-card__price">Цена: 4900 руб.</p>
@@ -128,7 +140,7 @@
                     </div>
                 </article>
                 <article class="product-card" data-category="keyboards">
-                    <img class="product-card__image" src="images/product-5.png" alt="Чёрная игровая клавиатура с красной подсветкой клавиш" width="480" height="230" loading="lazy">
+                    <img class="product-card__image" src="images/product-5.png" alt="Чёрная игровая клавиатура с красной подсветкой клавиш" width="480" height="230" loading="lazy" srcset="images/product-5-320.png 320w, images/product-5.png 480w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Игровая клавиатура, красная подсветка</h3>
                     <p class="product-card__description">Красная подсветка и дополнительные кнопки.</p>
                     <p class="product-card__price">Цена: 1900 руб.</p>
@@ -137,7 +149,7 @@
                     </div>
                 </article>
                 <article class="product-card" data-category="mice">
-                    <img class="product-card__image" src="images/product-6.png" alt="Сиреневая проводная игровая мышь с RGB-подсветкой" width="600" height="800" loading="lazy">
+                    <img class="product-card__image" src="images/product-6.png" alt="Сиреневая проводная игровая мышь с RGB-подсветкой" width="600" height="800" loading="lazy" srcset="images/product-6-320.png 320w, images/product-6-480.png 480w, images/product-6.png 600w" sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 25vw" decoding="async">
                     <h3 class="product-card__title">Игровая мышь сиреневая</h3>
                     <p class="product-card__description">Проводная мышь с RGB-подсветкой.</p>
                     <p class="product-card__price">Цена: 1500 руб.</p>
