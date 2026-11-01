@@ -13,7 +13,7 @@
   --color-surface: #f7f7f7;
   --color-surface-accent: #eef5ff;
   --color-danger: #b00020;
-  --color-success: #168a2f;
+  --color-success: #0f6b2c;
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
 
@@ -744,4 +744,95 @@ a:focus-visible {
 .to-top:hover {
   color: var(--color-white);
   background-color: var(--color-primary-dark);
+}
+
+/* ===============================
+   17. Доступность (A11y)
+   =============================== */
+
+/* Ссылка пропуска: скрыта за верхней границей и появляется при фокусе. */
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: -100px;
+  z-index: calc(var(--z-modal) + 1);
+  padding: 8px 12px;
+  color: var(--color-white);
+  background-color: #111111;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 16px;
+}
+
+/* Основное содержимое получает фокус по skip-link, рамка контейнеру не нужна. */
+#main:focus {
+  outline: none;
+}
+
+/* Видимый фокус для всех интерактивных элементов. */
+:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.button:focus-visible,
+.order-form__input:focus-visible,
+.order-form__select:focus-visible,
+.order-form__textarea:focus-visible,
+.order-form__checkbox:focus-visible,
+.catalog-filters__input:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Заголовок и кнопка закрытия модального окна. */
+.order-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.order-dialog__title {
+  margin: 0;
+}
+
+.order-dialog__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.order-dialog__close:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Пояснение к обязательным полям. */
+.form-note {
+  margin: 0 0 var(--space-md);
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Сообщение об ошибке не должно зависеть только от цвета. */
+.order-form__error {
+  font-weight: 700;
 }

@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -47,10 +49,10 @@
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main" tabindex="-1">
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a class="breadcrumbs__link" href="index.html">Главная</a>
-            <span class="breadcrumbs__current">Заявка</span>
+            <span class="breadcrumbs__current" aria-current="page">Заявка</span>
         </nav>
 
         <section class="section">
@@ -61,6 +63,7 @@
         <div class="order-layout">
             <section class="order-layout__form" aria-labelledby="order-form-title">
                 <h2 id="order-form-title">Форма заявки</h2>
+                <p class="form-note">Поля, отмеченные звёздочкой (*), обязательны для заполнения.</p>
                 <form class="order-form" id="order-form" action="#" method="post" novalidate>
                     <div class="order-form__field">
                         <label class="order-form__label" for="order-name">Имя *</label>
@@ -77,8 +80,9 @@
                     <div class="order-form__field">
                         <label class="order-form__label" for="order-phone">Телефон *</label>
                         <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel"
-                            placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
-                        <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+                            placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                            aria-describedby="order-phone-hint" required>
+                        <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
                     </div>
 
                     <div class="order-form__field">
@@ -143,11 +147,13 @@
 
     <footer class="site-footer" id="contacts">
         <div class="site-footer__inner">
-            <ul class="site-footer__links">
-                <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
+            <nav class="site-footer__nav" aria-label="Навигация в подвале">
+                <ul class="site-footer__links">
+                    <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
                 <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
                 <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
-            </ul>
+                </ul>
+            </nav>
             <p class="site-footer__text">Тел.: +7 (900) 000-00-00, e-mail: info@example.com</p>
             <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
             <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>

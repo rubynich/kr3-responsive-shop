@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -47,7 +49,7 @@
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main" tabindex="-1">
         <section class="hero">
             <div class="hero__content">
                 <h1 class="hero__title">Учебный интернет-магазин игровой периферии</h1>
@@ -97,8 +99,8 @@
                     <p class="product-card__description">Полноразмерная клавиатура с цифровым блоком.</p>
                     <p class="product-card__price">Цена: 4500 руб.</p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
-                        <button class="button button--secondary product-card__button" type="button" data-product="Клавиатура с RGB-подсветкой">Заказать</button>
+                        <a class="button button--primary product-card__button" href="product.html" aria-label="Подробнее: Клавиатура с RGB-подсветкой">Подробнее</a>
+                        <button class="button button--secondary product-card__button" type="button" data-product="Клавиатура с RGB-подсветкой" aria-label="Заказать: Клавиатура с RGB-подсветкой">Заказать</button>
                     </div>
                 </article>
                 <article class="product-card product-card--new" data-category="mice">
@@ -108,8 +110,8 @@
                     <p class="product-card__description">Белая игровая мышь с боковыми кнопками.</p>
                     <p class="product-card__price">Цена: 11900 руб.</p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="product-2.html">Подробнее</a>
-                        <button class="button button--secondary product-card__button" type="button" data-product="Игровая мышь PRO X2">Заказать</button>
+                        <a class="button button--primary product-card__button" href="product-2.html" aria-label="Подробнее: Игровая мышь PRO X2">Подробнее</a>
+                        <button class="button button--secondary product-card__button" type="button" data-product="Игровая мышь PRO X2" aria-label="Заказать: Игровая мышь PRO X2">Заказать</button>
                     </div>
                 </article>
                 <article class="product-card product-card--discount" data-category="headsets">
@@ -119,8 +121,8 @@
                     <p class="product-card__description">Белая гарнитура с гибким микрофоном.</p>
                     <p class="product-card__price">Цена: 3500 руб. <s class="product-card__old-price">4200 руб.</s></p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="product-3.html">Подробнее</a>
-                        <button class="button button--secondary product-card__button" type="button" data-product="Игровая гарнитура с RGB">Заказать</button>
+                        <a class="button button--primary product-card__button" href="product-3.html" aria-label="Подробнее: Игровая гарнитура с RGB">Подробнее</a>
+                        <button class="button button--secondary product-card__button" type="button" data-product="Игровая гарнитура с RGB" aria-label="Заказать: Игровая гарнитура с RGB">Заказать</button>
                     </div>
                 </article>
             </div>
@@ -129,11 +131,13 @@
 
     <footer class="site-footer" id="contacts">
         <div class="site-footer__inner">
-            <ul class="site-footer__links">
-                <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
+            <nav class="site-footer__nav" aria-label="Навигация в подвале">
+                <ul class="site-footer__links">
+                    <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
                 <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
                 <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
-            </ul>
+                </ul>
+            </nav>
             <p class="site-footer__text">Тел.: +7 (900) 000-00-00, e-mail: info@example.com</p>
             <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
             <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
@@ -143,33 +147,40 @@
     <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
 
     <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-        <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+        <div class="order-dialog__header">
+            <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+            <button class="order-dialog__close" type="button" aria-label="Закрыть окно" data-close-dialog>
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
         <p class="order-dialog__product">Товар: <strong id="selected-product-name"></strong></p>
+        <p class="form-note">Поля, отмеченные звёздочкой (*), обязательны для заполнения.</p>
 
         <form class="order-form" id="order-dialog-form" action="#" method="post" novalidate>
             <input id="selected-product" name="selected-product" type="hidden">
 
             <div class="order-form__field">
-                <label class="order-form__label" for="dialog-name">Имя</label>
+                <label class="order-form__label" for="dialog-name">Имя *</label>
                 <input class="order-form__input" id="dialog-name" name="name" type="text"
                     placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="dialog-email">E-mail</label>
+                <label class="order-form__label" for="dialog-email">E-mail *</label>
                 <input class="order-form__input" id="dialog-email" name="email" type="email"
                     placeholder="example@mail.ru" autocomplete="email" required>
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="dialog-phone">Телефон</label>
+                <label class="order-form__label" for="dialog-phone">Телефон *</label>
                 <input class="order-form__input" id="dialog-phone" name="phone" type="tel" inputmode="tel"
-                    placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
-                <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+                    placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                    aria-describedby="dialog-phone-hint" required>
+                <small class="order-form__hint" id="dialog-phone-hint">Формат: +7 (900) 000-00-00</small>
             </div>
 
             <div class="order-form__field">
-                <label class="order-form__label" for="dialog-topic">Тема заявки</label>
+                <label class="order-form__label" for="dialog-topic">Тема заявки *</label>
                 <select class="order-form__select" id="dialog-topic" name="topic" required>
                     <option value="">Выберите тему</option>
                     <option value="product">Заказ товара</option>
