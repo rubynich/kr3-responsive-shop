@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Каталог товаров учебного интернет-магазина: шесть карточек, категории и блок фильтров.">
+    <title>Каталог товаров — Учебный интернет-магазин</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="js/main.js" defer></script>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Каталог товаров — Учебный интернет-магазин">
+    <meta property="og:description" content="Каталог товаров учебного интернет-магазина: шесть карточек, категории и блок фильтров.">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">ShopProject</a>
+
+            <nav class="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current">Каталог</span>
+        </nav>
+
+        <section class="section">
+            <h1>Каталог товаров</h1>
+            <p>Клавиатуры, мыши и гарнитуры. Для первых трёх товаров доступна подробная карточка.</p>
+        </section>
+
+        <div class="catalog-layout">
+            <aside class="catalog-filters catalog-layout__filters" aria-label="Фильтры каталога">
+                <h2 class="catalog-filters__title">Фильтры</h2>
+                <form class="catalog-filters__form" action="#" method="get">
+                    <fieldset class="catalog-filters__group">
+                        <legend class="catalog-filters__legend">Категория</legend>
+                        <label class="catalog-filters__label">
+                            <input type="radio" name="category" value="all" checked> Все товары
+                        </label>
+                        <label class="catalog-filters__label">
+                            <input type="radio" name="category" value="keyboards"> Клавиатуры
+                        </label>
+                        <label class="catalog-filters__label">
+                            <input type="radio" name="category" value="mice"> Мыши
+                        </label>
+                        <label class="catalog-filters__label">
+                            <input type="radio" name="category" value="headsets"> Гарнитуры
+                        </label>
+                    </fieldset>
+
+                    <fieldset class="catalog-filters__group">
+                        <legend class="catalog-filters__legend">Цена, руб.</legend>
+                        <label class="catalog-filters__label" for="price-from">От</label>
+                        <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0"
+                            placeholder="0">
+                        <label class="catalog-filters__label" for="price-to">До</label>
+                        <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0"
+                            placeholder="12000">
+                    </fieldset>
+
+                    <button class="button button--primary" type="submit">Применить</button>
+                </form>
+            </aside>
+
+            <section class="catalog-layout__products" aria-labelledby="catalog-list-title">
+                <h2 id="catalog-list-title">Список товаров (6)</h2>
+                <div class="products-grid">
+                <article class="product-card product-card--featured" data-category="keyboards">
+                    <span class="product-card__badge">Хит</span>
+                    <img class="product-card__image" src="images/product-1.png" srcset="images/product-1-320.png 320w, images/product-1-480.png 480w, images/product-1.png 760w" sizes="(max-width: 639px) calc(100vw - 66px), (max-width: 1023px) calc(50vw - 66px), (max-width: 1199px) 30vw, 220px" alt="Клавиатура с цифровым блоком, чёрно-бежево-жёлтые клавиши, RGB-подсветка" width="760" height="428" loading="lazy">
+                    <h3 class="product-card__title">Клавиатура с RGB-подсветкой</h3>
+                    <p class="product-card__description">Полноразмерная клавиатура с цифровым блоком.</p>
+                    <p class="product-card__price">Цена: 4500 руб.</p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+                    </div>
+                </article>
+                <article class="product-card product-card--new" data-category="mice">
+                    <span class="product-card__badge">Новинка</span>
+                    <img class="product-card__image" src="images/product-2.png" srcset="images/product-2-320.png 320w, images/product-2-480.png 480w, images/product-2.png 779w" sizes="(max-width: 639px) calc(100vw - 66px), (max-width: 1023px) calc(50vw - 66px), (max-width: 1199px) 30vw, 220px" alt="Белая игровая мышь PRO X2 с чёрной верхней панелью, вид сверху" width="779" height="800" loading="lazy">
+                    <h3 class="product-card__title">Игровая мышь PRO X2</h3>
+                    <p class="product-card__description">Белая игровая мышь с боковыми кнопками.</p>
+                    <p class="product-card__price">Цена: 11900 руб.</p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="product-2.html">Подробнее</a>
+                    </div>
+                </article>
+                <article class="product-card product-card--discount" data-category="headsets">
+                    <span class="product-card__badge">Скидка</span>
+                    <img class="product-card__image" src="images/product-3.png" alt="Белая игровая гарнитура с RGB-кольцом на чашке и микрофоном" width="307" height="320" loading="lazy">
+                    <h3 class="product-card__title">Игровая гарнитура с RGB</h3>
+                    <p class="product-card__description">Белая гарнитура с гибким микрофоном.</p>
+                    <p class="product-card__price">Цена: 3500 руб. <s class="product-card__old-price">4200 руб.</s></p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="product-3.html">Подробнее</a>
+                    </div>
+                </article>
+                <article class="product-card" data-category="headsets">
+                    <img class="product-card__image" src="images/product-4.png" alt="Белая гарнитура с микрофоном и подсвеченным логотипом на чашке" width="320" height="320" loading="lazy">
+                    <h3 class="product-card__title">Белая гарнитура с микрофоном</h3>
+                    <p class="product-card__description">Мягкие амбушюры и подсветка логотипа.</p>
+                    <p class="product-card__price">Цена: 4900 руб.</p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="order.html">Оставить заявку</a>
+                    </div>
+                </article>
+                <article class="product-card" data-category="keyboards">
+                    <img class="product-card__image" src="images/product-5.png" srcset="images/product-5-320.png 320w, images/product-5.png 480w" sizes="(max-width: 639px) calc(100vw - 66px), (max-width: 1023px) calc(50vw - 66px), (max-width: 1199px) 30vw, 220px" alt="Чёрная игровая клавиатура с красной подсветкой клавиш" width="480" height="230" loading="lazy">
+                    <h3 class="product-card__title">Игровая клавиатура, красная подсветка</h3>
+                    <p class="product-card__description">Красная подсветка и дополнительные кнопки.</p>
+                    <p class="product-card__price">Цена: 1900 руб.</p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="order.html">Оставить заявку</a>
+                    </div>
+                </article>
+                <article class="product-card" data-category="mice">
+                    <img class="product-card__image" src="images/product-6.png" srcset="images/product-6-320.png 320w, images/product-6-480.png 480w, images/product-6.png 600w" sizes="(max-width: 639px) calc(100vw - 66px), (max-width: 1023px) calc(50vw - 66px), (max-width: 1199px) 30vw, 220px" alt="Сиреневая проводная игровая мышь с RGB-подсветкой" width="600" height="800" loading="lazy">
+                    <h3 class="product-card__title">Игровая мышь сиреневая</h3>
+                    <p class="product-card__description">Проводная мышь с RGB-подсветкой.</p>
+                    <p class="product-card__price">Цена: 1500 руб.</p>
+                    <div class="product-card__actions">
+                        <a class="button button--primary product-card__button" href="order.html">Оставить заявку</a>
+                    </div>
+                </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <ul class="site-footer__links">
+                <li><a class="site-footer__link" href="index.html#advantages">Преимущества</a></li>
+                <li><a class="site-footer__link" href="index.html#popular">Популярные товары</a></li>
+                <li><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+            </ul>
+            <p class="site-footer__text">Тел.: +7 (900) 000-00-00, e-mail: info@example.com</p>
+            <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+        </div>
+    </footer>
+
+    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+</body>
+
+</html>

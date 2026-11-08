@@ -1,0 +1,554 @@
+/*
+  Адаптивные стили для контрольной работы №3.
+  Подход: Mobile First.
+  Базовые стили рассчитаны на мобильный экран.
+  Расширения добавляются через min-width медиазапросы.
+
+  Файл подключается ПОСЛЕ style.css и переопределяет его десктопные
+  правила (сетки, sticky, фиксированные отступы).
+
+  Брейкпоинты:
+    640px  — крупный телефон / небольшой планшет (2 колонки карточек)
+    768px  — планшет (меню в строку, sticky-шапка, карточка товара в 2 колонки)
+    900px  — hero и страница заявки в 2 колонки
+    1024px — desktop (каталог с боковым фильтром, 3 колонки на главной)
+    1200px — широкий desktop (3 колонки карточек в каталоге)
+*/
+
+/* ===============================
+   1. Базовые правила
+   =============================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Временная страховка от горизонтального скролла.
+   Не заменяет исправление раскладки: все блоки ниже сделаны так,
+   чтобы не выходить за ширину экрана. */
+body {
+  overflow-x: hidden;
+}
+
+/* Отступ под липкой шапкой: на мобильном шапка не липкая. */
+:root {
+  --header-offset: var(--space-md);
+}
+
+.site-main {
+  padding: var(--space-md);
+}
+
+.section {
+  margin-bottom: var(--space-lg);
+}
+
+.section h1 {
+  font-size: clamp(24px, 6vw, 32px);
+  line-height: 1.2;
+}
+
+/* Крупные области нажатия на сенсорных экранах (минимум 44px). */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-offset: 88px;
+  }
+
+  .site-main {
+    padding: var(--space-lg);
+  }
+
+  .section {
+    margin-bottom: var(--space-xl);
+  }
+}
+
+/* ===============================
+   2. Шапка и навигация
+   =============================== */
+
+/* Мобильный экран: шапка не липкая, пункты меню идут в колонку. */
+.site-header {
+  position: static;
+  padding: 0 var(--space-md);
+}
+
+.site-header__inner {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-xs);
+  padding: var(--space-sm) 0;
+}
+
+.site-header__logo {
+  padding: var(--space-sm) 0;
+  font-size: var(--font-size-lg);
+}
+
+.site-nav__list {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-xs);
+}
+
+.site-nav__link {
+  display: block;
+  padding: 12px var(--space-md);
+}
+
+@media (min-width: 768px) {
+  /* Планшет и desktop: меню в строку, шапка закрепляется. */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    padding: 0 var(--space-lg);
+  }
+
+  .site-header__inner {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-sm) var(--space-lg);
+    padding: var(--space-md) 0;
+  }
+
+  .site-header__logo {
+    padding: 0;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .site-nav__link {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+/* ===============================
+   3. Подвал и ссылки-якоря
+   =============================== */
+
+.site-footer {
+  padding: var(--space-lg) var(--space-md);
+}
+
+.site-footer__links {
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.anchor-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+@media (min-width: 640px) {
+  .site-footer__links {
+    flex-direction: row;
+    gap: var(--space-sm) var(--space-lg);
+  }
+}
+
+@media (min-width: 768px) {
+  .site-footer {
+    padding: var(--space-lg);
+  }
+}
+
+/* ===============================
+   4. Hero-блок (главная)
+   =============================== */
+
+.hero {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.hero__content {
+  display: grid;
+  gap: var(--space-md);
+  justify-items: start;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(26px, 5.5vw, 44px);
+  line-height: 1.15;
+}
+
+.hero__text {
+  margin: 0;
+}
+
+.hero picture {
+  display: block;
+}
+
+.hero__image {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  margin-inline: auto;
+  border-radius: var(--radius-md);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding: var(--space-xl) var(--space-lg);
+  }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 520px);
+  }
+}
+
+/* ===============================
+   5. Сетка карточек товаров
+   =============================== */
+
+.products-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+}
+
+.product-card {
+  min-width: 0;
+}
+
+.product-card__title,
+.product-card__description {
+  overflow-wrap: anywhere;
+}
+
+.product-card__button {
+  flex: 1 1 auto;
+}
+
+@media (min-width: 640px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .products-grid {
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* В каталоге слева стоит фильтр, поэтому места меньше: пока 2 колонки. */
+  .catalog-layout__products .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .catalog-layout__products .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ===============================
+   6. Каталог и боковой фильтр
+   =============================== */
+
+/* Мобильный экран: фильтр над товарами, не липкий. */
+.catalog-layout {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "filters"
+    "products";
+  gap: var(--space-lg);
+}
+
+.catalog-filters {
+  position: static;
+}
+
+.catalog-filters__input {
+  min-height: 44px;
+  font-size: 16px;
+}
+
+.catalog-filters__label {
+  padding-block: var(--space-xs);
+}
+
+@media (min-width: 640px) {
+  /* Категория и цена рядом, кнопка на всю строку. */
+  .catalog-filters__form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .catalog-filters__form > .button {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .catalog-layout {
+    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-areas: "filters products";
+    align-items: start;
+  }
+
+  .catalog-filters {
+    position: sticky;
+    top: var(--header-offset);
+  }
+
+  .catalog-filters__form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .catalog-filters__form > .button {
+    justify-self: stretch;
+  }
+}
+
+/* ===============================
+   7. Изображения карточек
+   =============================== */
+
+/* aspect-ratio + object-fit: contain: товар целиком, без обрезки. */
+.product-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.product-page__picture {
+  display: block;
+}
+
+/* ===============================
+   8. Карточка товара (страницы product*.html)
+   =============================== */
+
+.product-page__title {
+  font-size: clamp(24px, 6vw, 32px);
+  line-height: 1.2;
+}
+
+.product-page__layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+}
+
+.product-page__price {
+  font-size: clamp(24px, 5vw, var(--font-size-xl));
+}
+
+/* На телефоне кнопки на всю ширину: удобно нажимать. */
+.product-page__actions .button {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 640px) {
+  .product-page__actions .button {
+    flex: 0 0 auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .product-page__layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+}
+
+/* ===============================
+   9. Таблица характеристик
+   =============================== */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-table {
+  width: 100%;
+  min-width: 300px;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  padding: var(--space-sm);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+  .product-table th,
+  .product-table td {
+    padding: var(--space-sm) var(--space-md);
+  }
+}
+
+/* ===============================
+   10. Форма заявки
+   =============================== */
+
+.order-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+}
+
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
+  min-height: 44px;
+  font-size: 16px; /* меньше 16px iOS увеличивает страницу при фокусе */
+}
+
+.order-form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.order-form__label--inline {
+  min-height: 44px;
+}
+
+.order-form__checkbox {
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+
+/* На телефоне кнопки формы друг под другом на всю ширину. */
+.order-form__actions {
+  flex-direction: column;
+}
+
+/* Страница заявки: сетка из полей. Модальное окно остаётся в одну колонку. */
+.order-layout .order-form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.order-layout .order-form__field {
+  margin-bottom: 0;
+}
+
+.order-layout .order-form__actions {
+  margin-top: 0;
+}
+
+@media (min-width: 640px) {
+  .order-form__actions {
+    flex-direction: row;
+  }
+
+  .order-layout .order-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-layout .order-form__field--wide,
+  .order-layout .order-form__actions {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 900px) {
+  .order-layout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: var(--space-xl);
+  }
+}
+
+/* ===============================
+   11. Модальное окно <dialog>
+   =============================== */
+
+.order-dialog {
+  width: min(100% - 32px, 560px);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  padding: var(--space-md);
+  overflow: auto;
+}
+
+.order-dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+@media (min-width: 640px) {
+  .order-dialog {
+    padding: var(--space-lg);
+  }
+}
+
+/* ===============================
+   12. Фиксированные элементы
+   =============================== */
+
+.to-top {
+  right: var(--space-md);
+  bottom: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+/* Уведомление на телефоне поднято над кнопкой «Наверх», чтобы не перекрываться. */
+.success-message {
+  right: var(--space-md);
+  bottom: 72px;
+  left: var(--space-md);
+  max-width: none;
+}
+
+@media (min-width: 768px) {
+  .to-top {
+    right: var(--space-xl);
+    bottom: var(--space-xl);
+  }
+
+  .success-message {
+    right: auto;
+    bottom: var(--space-lg);
+    left: var(--space-lg);
+    max-width: 360px;
+  }
+}
