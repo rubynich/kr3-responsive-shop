@@ -94,10 +94,15 @@ body {
 }
 
 .site-header__inner {
-  flex-direction: column;
-  align-items: stretch;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
   gap: var(--space-xs);
   padding: var(--space-sm) 0;
+}
+
+.site-nav {
+  flex-basis: 100%;
 }
 
 .site-header__logo {
@@ -136,6 +141,10 @@ body {
     padding: 0;
   }
 
+  .site-nav {
+    flex-basis: auto;
+  }
+
   .site-nav__list {
     flex-direction: row;
     flex-wrap: wrap;
@@ -145,6 +154,93 @@ body {
   .site-nav__link {
     display: inline-block;
     padding: var(--space-sm) var(--space-md);
+  }
+}
+
+/* --- Мобильное меню (кнопка «Меню») ---
+   Без JavaScript кнопки нет, а меню всегда раскрыто (класс .js ставится скриптом в head).
+   На телефоне с JS меню скрыто и раскрывается кнопкой; от 768px кнопка пропадает. */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 44px;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: var(--color-primary);
+  background-color: var(--color-bg);
+  cursor: pointer;
+}
+
+.nav-toggle:hover,
+.nav-toggle[aria-expanded="true"] {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+/* Иконка «гамбургер»: три линии, при раскрытом меню превращаются в крестик. */
+.nav-toggle__icon,
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.nav-toggle__icon {
+  position: relative;
+}
+
+.nav-toggle__icon::before,
+.nav-toggle__icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle__icon::before {
+  top: -6px;
+}
+
+.nav-toggle__icon::after {
+  top: 6px;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon {
+  background-color: transparent;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::before {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle__icon::after {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.js .nav-toggle {
+  display: inline-flex;
+}
+
+.js .site-nav {
+  display: none;
+}
+
+.js .site-nav.is-open {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .js .nav-toggle {
+    display: none;
+  }
+
+  .js .site-nav {
+    display: block;
   }
 }
 
@@ -405,23 +501,111 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Телефон: каждая строка таблицы выглядит как карточка «параметр — значение».
+   Заголовок столбцов скрыт визуально, но остаётся для вспомогательных технологий. */
 .product-table {
+  display: block;
   width: 100%;
-  min-width: 300px;
   border-collapse: collapse;
 }
 
-.product-table th,
+.product-table caption {
+  display: block;
+}
+
+.product-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.product-table tbody {
+  display: block;
+}
+
+.product-table tbody tr {
+  display: block;
+  margin-bottom: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+
+.product-table tbody th,
 .product-table td {
-  padding: var(--space-sm);
+  display: block;
+  padding: 0;
+  border: 0;
   text-align: left;
   overflow-wrap: anywhere;
 }
 
+.product-table tbody th {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.product-table td {
+  font-weight: 700;
+}
+
+/* От 640px: обычная таблица с рамками и шапкой. */
 @media (min-width: 640px) {
+  .product-table {
+    display: table;
+    min-width: 300px;
+  }
+
+  .product-table caption {
+    display: table-caption;
+  }
+
+  .product-table thead {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  .product-table tbody {
+    display: table-row-group;
+  }
+
+  .product-table tbody tr {
+    display: table-row;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
   .product-table th,
+  .product-table tbody th,
   .product-table td {
+    display: table-cell;
     padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+  }
+
+  .product-table tbody th {
+    font-size: inherit;
+    font-weight: 700;
+    color: inherit;
+  }
+
+  .product-table td {
+    font-weight: 400;
   }
 }
 
@@ -494,6 +678,36 @@ body {
   .order-layout {
     grid-template-columns: minmax(0, 1fr) 300px;
     gap: var(--space-xl);
+  }
+}
+
+/* Страница контактов: форма обратной связи (поля те же, что в форме заявки). */
+.contact-form {
+  max-width: var(--container-width);
+}
+
+.contact-form .order-form {
+  display: grid;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.contact-form .order-form__field {
+  margin-bottom: 0;
+}
+
+.contact-form .order-form__actions {
+  margin-top: 0;
+}
+
+@media (min-width: 640px) {
+  .contact-form .order-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-form .order-form__field--wide,
+  .contact-form .order-form__actions {
+    grid-column: 1 / -1;
   }
 }
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Каталог товаров учебного интернет-магазина: шесть карточек, категории и блок фильтров.">
     <title>Каталог товаров — Учебный интернет-магазин</title>
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
@@ -15,11 +16,18 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
 
-            <nav class="site-nav" aria-label="Основная навигация">
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="nav-toggle__icon" aria-hidden="true"></span>
+                <span class="nav-toggle__text">Меню</span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="index.html">Главная</a>
@@ -41,10 +49,10 @@
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main" tabindex="-1">
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a class="breadcrumbs__link" href="index.html">Главная</a>
-            <span class="breadcrumbs__current">Каталог</span>
+            <span class="breadcrumbs__current" aria-current="page">Каталог</span>
         </nav>
 
         <section class="section">
@@ -96,7 +104,7 @@
                     <p class="product-card__description">Полноразмерная клавиатура с цифровым блоком.</p>
                     <p class="product-card__price">Цена: 4500 руб.</p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+                        <a class="button button--primary product-card__button" href="product.html" aria-label="Подробнее: Клавиатура с RGB-подсветкой">Подробнее</a>
                     </div>
                 </article>
                 <article class="product-card product-card--new" data-category="mice">
@@ -106,7 +114,7 @@
                     <p class="product-card__description">Белая игровая мышь с боковыми кнопками.</p>
                     <p class="product-card__price">Цена: 11900 руб.</p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="product-2.html">Подробнее</a>
+                        <a class="button button--primary product-card__button" href="product-2.html" aria-label="Подробнее: Игровая мышь PRO X2">Подробнее</a>
                     </div>
                 </article>
                 <article class="product-card product-card--discount" data-category="headsets">
@@ -116,7 +124,7 @@
                     <p class="product-card__description">Белая гарнитура с гибким микрофоном.</p>
                     <p class="product-card__price">Цена: 3500 руб. <s class="product-card__old-price">4200 руб.</s></p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="product-3.html">Подробнее</a>
+                        <a class="button button--primary product-card__button" href="product-3.html" aria-label="Подробнее: Игровая гарнитура с RGB">Подробнее</a>
                     </div>
                 </article>
                 <article class="product-card" data-category="headsets">
@@ -125,7 +133,7 @@
                     <p class="product-card__description">Мягкие амбушюры и подсветка логотипа.</p>
                     <p class="product-card__price">Цена: 4900 руб.</p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="order.html">Оставить заявку</a>
+                        <a class="button button--primary product-card__button" href="order.html" aria-label="Оставить заявку: Белая гарнитура с микрофоном">Оставить заявку</a>
                     </div>
                 </article>
                 <article class="product-card" data-category="keyboards">
@@ -134,7 +142,7 @@
                     <p class="product-card__description">Красная подсветка и дополнительные кнопки.</p>
                     <p class="product-card__price">Цена: 1900 руб.</p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="order.html">Оставить заявку</a>
+                        <a class="button button--primary product-card__button" href="order.html" aria-label="Оставить заявку: Игровая клавиатура, красная подсветка">Оставить заявку</a>
                     </div>
                 </article>
                 <article class="product-card" data-category="mice">
@@ -143,7 +151,7 @@
                     <p class="product-card__description">Проводная мышь с RGB-подсветкой.</p>
                     <p class="product-card__price">Цена: 1500 руб.</p>
                     <div class="product-card__actions">
-                        <a class="button button--primary product-card__button" href="order.html">Оставить заявку</a>
+                        <a class="button button--primary product-card__button" href="order.html" aria-label="Оставить заявку: Игровая мышь сиреневая">Оставить заявку</a>
                     </div>
                 </article>
                 </div>
@@ -164,7 +172,7 @@
         </div>
     </footer>
 
-    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+    <a class="to-top" href="#">Наверх</a>
 </body>
 
 </html>

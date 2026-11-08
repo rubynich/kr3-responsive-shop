@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Карточка товара «Игровая мышь PRO X2»: изображение, описание, цена, таблица характеристик и кнопка заявки.">
     <title>Игровая мышь PRO X2 — карточка товара</title>
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
@@ -15,11 +16,18 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
 
-            <nav class="site-nav" aria-label="Основная навигация">
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="nav-toggle__icon" aria-hidden="true"></span>
+                <span class="nav-toggle__text">Меню</span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="index.html">Главная</a>
@@ -41,11 +49,11 @@
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main" tabindex="-1">
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a class="breadcrumbs__link" href="index.html">Главная</a>
             <a class="breadcrumbs__link breadcrumbs__link--next" href="catalog.html">Каталог</a>
-            <span class="breadcrumbs__current">Игровая мышь PRO X2</span>
+            <span class="breadcrumbs__current" aria-current="page">Игровая мышь PRO X2</span>
         </nav>
 
         <article class="product-page">
@@ -128,7 +136,7 @@
         </div>
     </footer>
 
-    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+    <a class="to-top" href="#">Наверх</a>
 </body>
 
 </html>
