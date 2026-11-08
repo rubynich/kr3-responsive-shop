@@ -146,3 +146,42 @@ document.querySelectorAll('.order-form').forEach((form) => {
     showSuccess();
   });
 });
+
+// Мобильное меню: кнопка «Меню» открывает и закрывает список ссылок.
+// Состояние хранится в aria-expanded, видимость меню задаёт CSS (класс is-open).
+const navToggle = document.querySelector('.nav-toggle');
+const siteNav = document.getElementById('site-nav');
+
+if (navToggle && siteNav) {
+  const desktopQuery = window.matchMedia('(min-width: 768px)');
+
+  function setNavOpen(open) {
+    siteNav.classList.toggle('is-open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+  }
+
+  navToggle.addEventListener('click', () => {
+    setNavOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // Escape закрывает меню и возвращает фокус на кнопку.
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+      setNavOpen(false);
+      navToggle.focus();
+    }
+  });
+
+  // Переход по ссылке меню (в том числе по якорю на той же странице) закрывает меню.
+  siteNav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setNavOpen(false);
+  });
+
+  // Клик вне шапки закрывает меню.
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.site-header')) setNavOpen(false);
+  });
+
+  // При переходе на планшет/desktop меню всегда показано, сбрасываем состояние кнопки.
+  desktopQuery.addEventListener('change', () => setNavOpen(false));
+}

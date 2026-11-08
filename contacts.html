@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Контактная информация учебного интернет-магазина.">
+    <meta name="description" content="Контактная информация и форма обратной связи учебного интернет-магазина.">
     <title>Контакты — Учебный интернет-магазин</title>
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/main.js" defer></script>
     <meta property="og:type" content="website">
     <meta property="og:title" content="Контакты — Учебный интернет-магазин">
-    <meta property="og:description" content="Контактная информация учебного интернет-магазина.">
+    <meta property="og:description" content="Контактная информация и форма обратной связи учебного интернет-магазина.">
 </head>
 
 <body>
@@ -21,7 +22,12 @@
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
 
-            <nav class="site-nav" aria-label="Основная навигация">
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="nav-toggle__icon" aria-hidden="true"></span>
+                <span class="nav-toggle__text">Меню</span>
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
                 <ul class="site-nav__list">
                     <li class="site-nav__item">
                         <a class="site-nav__link" href="index.html">Главная</a>
@@ -60,10 +66,43 @@
             </ul>
         </section>
 
-        <section class="section" id="feedback">
-            <h2 class="section__title">Обратная связь</h2>
-            <p>Для отправки заявки используйте форму на странице заявки.</p>
-            <a class="button button--primary" href="order.html">Перейти к форме</a>
+        <section class="section contact-form" id="feedback" aria-labelledby="feedback-title">
+            <h2 class="section__title" id="feedback-title">Обратная связь</h2>
+            <p>Напишите нам, и мы ответим на указанный e-mail. Поля, отмеченные звёздочкой, обязательны для заполнения.</p>
+
+            <form class="order-form" id="feedback-form" action="#" method="post" novalidate>
+                <div class="order-form__field">
+                    <label class="order-form__label" for="feedback-name">Имя *</label>
+                    <input class="order-form__input" id="feedback-name" name="name" type="text"
+                        placeholder="Введите ваше имя" minlength="2" autocomplete="given-name" required>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="feedback-email">E-mail *</label>
+                    <input class="order-form__input" id="feedback-email" name="email" type="email"
+                        placeholder="example@mail.ru" autocomplete="email" required>
+                </div>
+
+                <div class="order-form__field order-form__field--wide">
+                    <label class="order-form__label" for="feedback-message">Сообщение *</label>
+                    <textarea class="order-form__textarea" id="feedback-message" name="message" rows="5"
+                        minlength="10" placeholder="Напишите ваш вопрос" required></textarea>
+                </div>
+
+                <div class="order-form__field order-form__field--wide">
+                    <label class="order-form__label order-form__label--inline" for="feedback-agreement">
+                        <input class="order-form__checkbox" id="feedback-agreement" name="agreement" type="checkbox" required>
+                        Я согласен на обработку данных *
+                    </label>
+                </div>
+
+                <div class="order-form__actions">
+                    <button class="button button--secondary" type="reset">Очистить</button>
+                    <button class="button button--primary" type="submit">Отправить сообщение</button>
+                </div>
+            </form>
+
+            <p>Нужно оформить заказ? Перейдите на <a href="order.html">страницу заявки</a>.</p>
         </section>
     </main>
 
@@ -81,6 +120,10 @@
     </footer>
 
     <a class="to-top" href="#">Наверх</a>
+
+    <p class="success-message" id="success-message" role="status" hidden>
+        Форма успешно отправлена!
+    </p>
 </body>
 
 </html>
