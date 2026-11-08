@@ -10,10 +10,11 @@
   --color-primary: #0057b8;
   --color-primary-dark: #003f86;
   --color-border: #dddddd;
+  --color-border-strong: #767676; /* границы полей форм: контраст 4.5:1 */
   --color-surface: #f7f7f7;
   --color-surface-accent: #eef5ff;
   --color-danger: #b00020;
-  --color-success: #168a2f;
+  --color-success: #12792a; /* белый текст на нём: 5.5:1 (было 4.46:1) */
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
 
@@ -72,9 +73,38 @@ a:hover {
   color: var(--color-primary-dark);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--color-primary);
+/* Видимый фокус для всех интерактивных элементов (клавиатурная навигация). */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
   outline-offset: 3px;
+}
+
+/* Ссылка пропуска: скрыта за пределами экрана, при фокусе появляется.
+   display: none не используется, иначе ссылка недоступна с клавиатуры. */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 1000;
+  padding: 8px 12px;
+  color: #ffffff;
+  background-color: #111111;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 16px;
+  color: #ffffff;
+  outline-color: #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #111111;
+}
+
+/* Программный фокус на <main> после skip-link не рисует рамку. */
+.site-main:focus {
+  outline: none;
 }
 
 /* Цель якорной ссылки не прячется под липкой шапкой. */
@@ -293,7 +323,7 @@ a:focus-visible {
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid var(--color-primary);
   outline-offset: 3px;
 }
 
@@ -472,13 +502,13 @@ a:focus-visible {
 .catalog-filters__input {
   width: 100%;
   padding: var(--space-sm) 10px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-sm);
   font: inherit;
 }
 
 .catalog-filters__input:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid var(--color-primary);
   outline-offset: 3px;
 }
 
@@ -525,7 +555,7 @@ a:focus-visible {
 .order-form__textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-sm);
   font: inherit;
 }
@@ -542,7 +572,7 @@ a:focus-visible {
 .order-form__textarea:focus-visible,
 .order-form__checkbox:focus-visible {
   border-color: var(--color-primary);
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid var(--color-primary);
   outline-offset: 3px;
 }
 
@@ -744,4 +774,21 @@ a:focus-visible {
 .to-top:hover {
   color: var(--color-white);
   background-color: var(--color-primary-dark);
+}
+
+/* ===============================
+   17. Доступность: уменьшенное движение
+   =============================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

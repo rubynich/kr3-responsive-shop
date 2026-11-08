@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -41,10 +43,10 @@
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main" tabindex="-1">
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a class="breadcrumbs__link" href="index.html">Главная</a>
-            <span class="breadcrumbs__current">Контакты</span>
+            <span class="breadcrumbs__current" aria-current="page">Контакты</span>
         </nav>
 
         <section class="section">
@@ -78,7 +80,7 @@
         </div>
     </footer>
 
-    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+    <a class="to-top" href="#">Наверх</a>
 </body>
 
 </html>

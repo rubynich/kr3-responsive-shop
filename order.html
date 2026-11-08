@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <header class="site-header">
         <div class="site-header__inner">
             <a class="site-header__logo" href="index.html">ShopProject</a>
@@ -41,10 +43,10 @@
         </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main" tabindex="-1">
         <nav class="breadcrumbs" aria-label="Хлебные крошки">
             <a class="breadcrumbs__link" href="index.html">Главная</a>
-            <span class="breadcrumbs__current">Заявка</span>
+            <span class="breadcrumbs__current" aria-current="page">Заявка</span>
         </nav>
 
         <section class="section">
@@ -71,8 +73,8 @@
                     <div class="order-form__field">
                         <label class="order-form__label" for="order-phone">Телефон *</label>
                         <input class="order-form__input" id="order-phone" name="phone" type="tel" inputmode="tel"
-                            placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
-                        <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+                            placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" aria-describedby="order-phone-hint" required>
+                        <small class="order-form__hint" id="order-phone-hint">Формат: +7 (900) 000-00-00</small>
                     </div>
 
                     <div class="order-form__field">
@@ -148,7 +150,7 @@
         </div>
     </footer>
 
-    <a class="to-top" href="#" aria-label="Наверх">Наверх</a>
+    <a class="to-top" href="#">Наверх</a>
 
     <p class="success-message" id="success-message" role="status" hidden>
         Форма успешно отправлена!
