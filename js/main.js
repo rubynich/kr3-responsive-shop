@@ -32,25 +32,39 @@ function showError(field) {
     error = document.createElement('small');
     error.id = errorId;
     error.className = 'order-form__error';
+    error.setAttribute('role', 'alert');
     field.closest('.order-form__field').append(error);
   }
 
   error.textContent = getErrorMessage(field);
   field.setAttribute('aria-invalid', 'true');
-  field.setAttribute('aria-describedby', errorId);
+  // Подсказку формата (если есть) оставляем в описании вместе с ошибкой.
+  const base = field.dataset.baseDescribedby;
+  field.setAttribute('aria-describedby', base ? `${base} ${errorId}` : errorId);
 }
 
 // Убираем ошибку у поля.
 function clearError(field) {
   field.removeAttribute('aria-invalid');
-  field.removeAttribute('aria-describedby');
+  if (field.dataset.baseDescribedby) {
+    field.setAttribute('aria-describedby', field.dataset.baseDescribedby);
+  } else {
+    field.removeAttribute('aria-describedby');
+  }
   const error = document.getElementById(`${field.id}-error`);
   if (error) error.remove();
 }
 
 // Поля формы, которые проверяются браузером.
 function getFields(form) {
-  return Array.from(form.querySelectorAll('input, select, textarea')).filter((field) => field.willValidate);
+  const fields = Array.from(form.querySelectorAll('input, select, textarea')).filter((field) => field.willValidate);
+  // Запоминаем исходный aria-describedby (подсказка формата телефона).
+  fields.forEach((field) => {
+    if (field.dataset.baseDescribedby === undefined && field.hasAttribute('aria-describedby')) {
+      field.dataset.baseDescribedby = field.getAttribute('aria-describedby');
+    }
+  });
+  return fields;
 }
 
 // Уведомление об успехе: показываем и скрываем через 5 секунд.
